@@ -1,0 +1,29 @@
+<div style="margin-top: 20px;">
+    <div style="width:800px;margin:20px auto;">
+        <h1>Editer un article</h1>
+        <div style="padding-top: 10px;padding-bottom: 10px;">
+            <mat-form-field appearance="outline" style="width:450px;">
+                <mat-label>Titre de l'article</mat-label>
+                <input matInput [(ngModel)]="articleEntity.description" placeholder="Titre">
+            </mat-form-field>
+
+            <mat-form-field *ngIf="appValues && appValues.length" appearance="outline" style="width:450px;">
+                <mat-label>Categorie</mat-label>
+                <mat-select [(ngModel)]="selectedAppValue">
+                    <mat-option *ngFor="let appValue of appValues" [value]="appValue"> {{ appValue.label }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width:450px;">
+                <mat-label>Saisir du contenu</mat-label>
+                <textarea matInput [(ngModel)]="articleEntity.content"></textarea>
+            </mat-form-field>
+
+            <div>
+                <button style="width:120px;" [disabled]="!articleEntity.description || !articleEntity.content"
+                    mat-raised-button (click)="add()">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>

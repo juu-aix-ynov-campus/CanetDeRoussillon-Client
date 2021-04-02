@@ -1,0 +1,65 @@
+<div style="margin-top: 20px;">
+    <div style="width:1000px;margin:20px auto;">
+        <div class="filter">
+            <div>
+                <h1>Liste de mes articles</h1>
+            </div>
+            <div>
+                <mat-form-field *ngIf="appValues && appValues.length" appearance="outline" style="width:250px;">
+                    <mat-label>Categorie</mat-label>
+                    <mat-select [(ngModel)]="appValueLabel" (ngModelChange)="loadArticles()">
+                        <mat-option *ngFor="let appValue of appValues" [value]="appValue.label"> {{ appValue.label }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="width:250px;margin-left: 10px;">
+                    <mat-label>description</mat-label>
+                    <input matInput [(ngModel)]="search" placeholder="Rechercher par description"
+                        (ngModelChange)="loadArticles()">
+                </mat-form-field>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <a routerLink="/article/new" mat-raised-button color="primary">Nouvel article</a>
+        </div>
+        <div *ngIf="articles">
+            <table mat-table *ngIf="articles.length" [dataSource]="articles" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> description </th>
+                    <td mat-cell *matCellDef="let article"> {{article.description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="content">
+                    <th mat-header-cell *matHeaderCellDef> content </th>
+                    <td mat-cell *matCellDef="let article"> {{article.content}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cat">
+                    <th mat-header-cell *matHeaderCellDef> Catégories </th>
+                    <td mat-cell *matCellDef="let article"> {{display(article.appValues)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> action </th>
+                    <td mat-cell *matCellDef="let article">
+                        <a mat-icon-button [routerLink]="'/article/'+ article.id">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+
+                        <button mat-icon-button (click)="deleteArticle(article.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="['description','content','cat','action']"></tr>
+                <tr mat-row *matRowDef="let article; columns: ['description','content','cat','action']"></tr>
+            </table>
+
+        </div>
+
+    </div>
+</div>
