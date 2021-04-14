@@ -7,7 +7,7 @@ import { ArticleDto, GetArticleRequest, GetArticleResponse, GetArticlesResponse 
     providedIn: 'root'
 })
 export class ArticleService {
-    private url = 'http://localhost:3070/article';
+    private url = 'http://localhost:3070/api/article';
 
     constructor(
         private httpClient: HttpClient

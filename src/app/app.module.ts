@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AddOrEditModule } from './pages/article/addOrEdit/addOrEdit.module';
+import { UserModule } from './pages/user/user.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AddOrEditModule } from './pages/article/addOrEdit/addOrEdit.module';
     MatSidenavModule,
     MatListModule,
     AddOrEditModule,
+    UserModule,
   ],
   providers: [AuthGuard, SessionStorageService],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppValue, GetAppValuesResponse } from "../models/appValue.dto";
 
-export const url = 'http://localhost:3070/referential';
+export const url = 'http://localhost:3070/api/referential';
 
 
 @Injectable({

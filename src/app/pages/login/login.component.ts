@@ -34,6 +34,7 @@ export class LoginComponent {
             }
             this.error = null;
             SessionStorageService.SaveObjectInSessionStorage('connectedUser', { user: response.user, token: response.token });
+            SessionStorageService.SaveInSessionStorage('token', response.token);
             this.authGuard.isConnected(this.user.login);
 
             this.router.navigateByUrl('/articles');

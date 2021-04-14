@@ -3,6 +3,7 @@ import { baseModel, GenericResponse } from "../base/base.dto";
 export interface UserDto extends baseModel {
     email?: string,
     login?: string,
+    role?: string,
 }
 
 export interface Credentials {
