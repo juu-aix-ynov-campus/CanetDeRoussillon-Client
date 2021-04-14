@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "nswag-generate-client": "ts-node --project ./tools/tools.tsconfig.json ./tools/nswag-generate-client.ts"
+    }
+}
